@@ -24,12 +24,12 @@ export class MockRepository implements ChatRepository {
     },
   ];
   async getAllChatHost(hostId: number): Promise<any> {
-    const chats = await this.listChat.filter((chat) => chat.hostId === hostId);
+    const chats = this.listChat.filter((chat) => chat.hostId === hostId);
     return chats;
   }
   async getAllChatGuest(guestId: number): Promise<any> {
-    const chats = await this.listChat.filter(
-      (chat) => chat.guestId === guestId,
+    const chats = this.listChat.filter(
+      (chat) => chat.guestId === guestId
     );
     return chats;
   }
