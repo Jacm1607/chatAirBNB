@@ -12,7 +12,7 @@ constructor(
 
     async execute(query: GetChatsHostQuery): Promise<ChatModel[]> {
         const { hostId }:any = query;
-        const chats = await this.chatRepository.findBy(hostId);
+        const chats = await this.chatRepository.findBy({hostId});
         return chats;
     }
 }

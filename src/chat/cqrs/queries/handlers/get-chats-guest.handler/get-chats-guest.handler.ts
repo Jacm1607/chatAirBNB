@@ -11,10 +11,8 @@ constructor(
     ) {}
 
     async execute(query: GetChatsGuestQuery): Promise<ChatModel[]> {
-        console.log(query)
         const { guestId }:any = query;
-        console.log(guestId);
-        const chats = await this.chatRepository.findBy(guestId);
+        const chats = await this.chatRepository.findBy({guestId});
         return chats;
     }
 }
