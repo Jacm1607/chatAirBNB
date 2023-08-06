@@ -1,23 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { MessageRepository } from 'src/messages/domain/message.repository';
-import { MessageModel } from '../model/message.model';
 import { MessageEntity } from 'src/messages/domain/message.enity';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { GetAllMessagesOfChatQuery } from 'src/messages/cqrs/queries/impl/get-all-messages-of-chat.query/get-all-messages-of-chat.query';
 
 @Injectable()
 export class MessageSQLiteRepository implements MessageRepository {
   constructor(
-    @InjectRepository(MessageModel)
-    private messageRepository: Repository<MessageModel>,
-  ) {}
+    private readonly queryBus: QueryBus,
+    private readonly commandBus:CommandBus
+    ) {}
 
   async getAllMessageOfChat(chatId: string): Promise<any> {
-    const messages = await this.messageRepository.findBy({ chatId });
-    return messages;
+    return await this.queryBus.execute(new GetAllMessagesOfChatQuery(chatId));
   }
   async createMessage(message: MessageEntity): Promise<any> {
-    const newMessage = await this.messageRepository.save(message);
-    return newMessage;
+    return await this.commandBus.execute(message);
   }
 }
