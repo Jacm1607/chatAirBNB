@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "f6270050-fe75-4adb-ad3f-f93a0d22a3fd",
+		"name": "MS-COM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21553754"
+	},
+	"item": [
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Obtener mensajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/message/44f78af5-1b58-4d00-8c6f-9f4ce0e6e049",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"44f78af5-1b58-4d00-8c6f-9f4ce0e6e049"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear mensaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"guestId\": 1,\r\n    \"chatId\":\"44f78af5-1b58-4d00-8c6f-9f4ce0e6e049\",\r\n    \"message\": \"Message 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/message/create",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Obtener chat huesped",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"guestId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/chat/guest",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"chat",
+								"guest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener chats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/chats",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"chats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener chat anfitrion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hostId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/chat/host",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"chat",
+								"host"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"guestId\": 2,\r\n  \"hostId\": 2,\r\n  \"name\": \"Departamento 125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/chat/create",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"chat",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
