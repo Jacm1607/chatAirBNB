@@ -20,3 +20,5 @@ Los usuarios tienen la capacidad de crear conversaciones con los correspondiente
 
 ### Consulta de Historial de Conversaciones
 Los usuarios pueden acceder al historial de conversaciones anteriores. Esto incluye la posibilidad de ver los mensajes que han sido enviados y recibidos en el contexto de una conversación específica.
+
+![Imagen](diagram.jpg)
