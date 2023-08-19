@@ -17,6 +17,13 @@ export class ChatValueObject implements ChatEntity {
     hostId: number;
     name: string;
   }) {
+    if (
+      typeof guestId !== 'number' ||
+      typeof hostId !== 'number' ||
+      typeof name !== 'string'
+    ) {
+      throw new Error('Argumentos inválidos');
+    }
     this.uuid = uuid();
     this.guestId = guestId;
     this.hostId = hostId;
