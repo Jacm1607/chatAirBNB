@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { ChatEntity } from 'src/chat/domain/chat.entity';
 import { ChatSQLiteRepository } from '../repository/sqlite.repository';
 import { ChatUseCase } from 'src/chat/application/chat.use-case';
 import { RequestGuest } from './interfaces/request-guest.interface';
 import { RequestHost } from './interfaces/request-host.interface';
+import { CreateChatDto } from './dto/request';
 
 @Controller()
 export class ChatController {
@@ -27,8 +28,10 @@ export class ChatController {
   }
 
   @Post('/chat/create')
-  createChat(@Body() body: ChatEntity): Promise<any> {
-    const newChat = this.chatCaseUse.registerChat(body);
+  async createChat(@Body(new ValidationPipe()) body: CreateChatDto): Promise<any> {
+    console.log(body)
+    const newChat = await this.chatCaseUse.registerChat(body);
+    console.log(newChat)
     return newChat;
   }
 }
