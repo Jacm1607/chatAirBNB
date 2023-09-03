@@ -8,7 +8,7 @@ import { CreateChatDto } from './dto/request';
 
 @Controller()
 export class ChatController {
-  constructor(private readonly appService: ChatSQLiteRepository) {}
+  constructor(private readonly appService: ChatSQLiteRepository) { }
   private uuidv4Regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
   private chatCaseUse = new ChatUseCase(this.appService);
 
@@ -40,6 +40,8 @@ export class ChatController {
     console.log(body)
     const newChat = await this.chatCaseUse.registerChat(body);
     console.log(newChat)
-    return newChat;
+    return {
+      status: 201
+    };
   }
 }
