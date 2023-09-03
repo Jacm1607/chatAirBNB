@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, Post, ValidationPipe } from '@nestjs/common';
 import { ChatEntity } from 'src/chat/domain/chat.entity';
 import { ChatSQLiteRepository } from '../repository/sqlite.repository';
 import { ChatUseCase } from 'src/chat/application/chat.use-case';
@@ -9,7 +9,7 @@ import { CreateChatDto } from './dto/request';
 @Controller()
 export class ChatController {
   constructor(private readonly appService: ChatSQLiteRepository) {}
-
+  private uuidv4Regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
   private chatCaseUse = new ChatUseCase(this.appService);
 
   @Get('/chats')
@@ -17,14 +17,22 @@ export class ChatController {
     return this.chatCaseUse.getChatAll();
   }
 
-  @Get('/chat/guest')
-  getChatGuest(@Body() body: RequestGuest): Promise<any> {
-    return this.chatCaseUse.getChatGuest(body);
+  @Get('/chat/guest/:guestId')
+  getChatGuest(@Param() guestId: RequestGuest): Promise<any> {
+    if (this.uuidv4Regex.test(guestId.guestId)) {
+      return this.chatCaseUse.getChatGuest(guestId);
+    } else {
+      throw new BadRequestException();
+    }
   }
 
-  @Get('/chat/host')
-  getChatHost(@Body() body: RequestHost): Promise<any> {
-    return this.chatCaseUse.getChatHost(body);
+  @Get('/chat/host/:hostId')
+  getChatHost(@Param() hostId: RequestHost): Promise<any> {
+    if (this.uuidv4Regex.test(hostId.hostId)) {
+      return this.chatCaseUse.getChatHost(hostId);
+    } else {
+      throw new BadRequestException();
+    }
   }
 
   @Post('/chat/create')
