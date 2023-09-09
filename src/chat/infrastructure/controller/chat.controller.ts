@@ -47,9 +47,7 @@ export class ChatController {
   async createChat(
     @Body(new ValidationPipe()) body: CreateChatDto,
   ): Promise<any> {
-    console.log(body);
     const newChat = await this.chatCaseUse.registerChat(body);
-    console.log(newChat);
     return {
       status: 201,
     };

@@ -4,7 +4,7 @@ import { ChatValueObject } from '../domain/chat.value-object';
 export class ChatUseCase {
   constructor(private readonly chatRepository: ChatRepository) {}
 
-  registerChat = async ({ guestId, hostId, name }) => {
+  registerChat = async ({ guestId, hostId, name }: any) => {
     const chatValue = new ChatValueObject({
       guestId,
       hostId,

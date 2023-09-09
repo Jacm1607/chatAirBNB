@@ -26,7 +26,6 @@ export class MessageController {
   async createMessage(
     @Body(new ValidationPipe()) body: CreateMessageDto,
   ): Promise<any> {
-    console.log(body);
     await this.messageCaseUse.registerMessage(body);
     return {
       status: 201,
