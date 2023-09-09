@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -26,6 +27,16 @@ export class MessageController {
   async createMessage(
     @Body(new ValidationPipe()) body: CreateMessageDto,
   ): Promise<any> {
+    console.log(body)
+    if (!this.uuidv4Regex.test(body.chatId)) {
+      throw new BadRequestException();
+    }
+    if (!this.uuidv4Regex.test(body.hostId)) {
+      throw new BadRequestException();
+    }
+    if (!this.uuidv4Regex.test(body.guestId)) {
+      throw new BadRequestException();
+    }
     await this.messageCaseUse.registerMessage(body);
     return {
       status: 201,
