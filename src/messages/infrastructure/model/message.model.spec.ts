@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { MessageModel } from './message.model'; // Asegúrate de que la ruta sea correcta
+import { MessageModel } from './message.model';
 import { instance, mock, when } from 'ts-mockito';
 
 describe('MessageModel', () => {
@@ -13,12 +12,12 @@ describe('MessageModel', () => {
     timestamp: new Date(),
   };
 
-  it('should create an instance of MessageModel', () => {
+  it('debe crear una instancia del MessageModel', () => {
     const messageModel = new MessageModel();
     expect(messageModel).toBeInstanceOf(MessageModel);
   });
 
-  it('should set properties correctly', () => {
+  it('debe establecer las propiedades correctamente', () => {
     const messageModel = new MessageModel();
     messageModel.id = 1;
     messageModel.uuid = '7c0690eb-9d5b-4b2c-90ec-699f8d960600';
@@ -36,12 +35,9 @@ describe('MessageModel', () => {
     expect(messageModel.timestamp).toBeInstanceOf(Date);
   });
 
-  it('should mock a MessageModel instance', () => {
-    // Crear una instancia mock de ChatModel
+  it('debe simular una instancia de MessageModel', () => {
     const mockMessageModel = mock(MessageModel);
 
-    // Configurar el comportamiento esperado
-    // when(mockChatModel.id).thenReturn(1);
     when(mockMessageModel.uuid).thenReturn(_message.uuid);
     when(mockMessageModel.hostId).thenReturn(_message.hostId);
     when(mockMessageModel.guestId).thenReturn(_message.guestId);
@@ -49,11 +45,8 @@ describe('MessageModel', () => {
     when(mockMessageModel.message).thenReturn(_message.message);
     when(mockMessageModel.timestamp).thenReturn(new Date());
 
-    // Obtener una instancia real a partir del mock
     const messageModel = instance(mockMessageModel);
 
-    // Probar las propiedades
-    // expect(chatModel.id).toBe(1);
     expect(messageModel.uuid).toBe(_message.uuid);
     expect(messageModel.hostId).toBe(_message.hostId);
     expect(messageModel.guestId).toBe(_message.guestId);

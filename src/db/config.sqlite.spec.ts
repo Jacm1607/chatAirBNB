@@ -12,12 +12,10 @@ describe('SQLITE', () => {
 
   it('should have entities defined', () => {
     expect(SQLITE).toHaveProperty('entities');
-    expect(SQLITE.entities).toHaveLength(1); // Ajusta el número según la cantidad de entidades esperadas
+    expect(SQLITE.entities).toHaveLength(1);
   });
 
   it('should have synchronize set to true', () => {
     expect(SQLITE).toHaveProperty('synchronize', true);
   });
-
-  // Puedes agregar más pruebas para otras propiedades si es necesario
 });

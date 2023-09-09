@@ -39,12 +39,12 @@ describe('ChatSQLiteRepository', () => {
     commandBus = module.get<CommandBus>(CommandBus);
   });
 
-  it('should be defined', () => {
+  it('debe estar definido', () => {
     expect(chatRepository).toBeDefined();
   });
 
-  it('should call GetChatsHostQuery with correct hostId for getAllChatHost', async () => {
-    const hostId = 'test-host-id';
+  it('debe llamar a GetChatsHostQuery con el hostId correcto para getAllChatHost', async () => {
+    const hostId = '130e2492-a21c-4211-b68c-91cb3a39f294';
 
     await chatRepository.getAllChatHost(hostId);
 
@@ -53,8 +53,8 @@ describe('ChatSQLiteRepository', () => {
     );
   });
 
-  it('should call GetChatsGuestQuery with correct guestId for getAllChatGuest', async () => {
-    const guestId = 'test-guest-id';
+  it('debe llamar a GetChatsGuestQuery con el guestId correcto para getAllChatGuest', async () => {
+    const guestId = 'f21f4103-38e1-42f6-b053-c35680c4e7c4';
 
     await chatRepository.getAllChatGuest(guestId);
 
@@ -63,21 +63,21 @@ describe('ChatSQLiteRepository', () => {
     );
   });
 
-  it('should call CommandBus.execute with chat entity for createChat', async () => {
+  it('debe llamar a CommandBus.execute con la entidad de chat para createChat', async () => {
     const chatEntity: ChatEntity = {
       uuid: '',
       guestId: '',
       hostId: '',
       name: '',
       timestamp: undefined,
-    }; // Define el chat entity según tus necesidades
+    };
 
     await chatRepository.createChat(chatEntity);
 
     expect(mockCommandBus.execute).toHaveBeenCalledWith(chatEntity);
   });
 
-  it('should call GetChatsQuery for getAllChat', async () => {
+  it('debe llamar a GetChatsQuery para getAllChat', async () => {
     await chatRepository.getAllChat();
 
     expect(mockQueryBus.execute).toHaveBeenCalledWith(new GetChatsQuery());

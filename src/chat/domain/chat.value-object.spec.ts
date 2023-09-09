@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { ChatValueObject } from './chat.value-object';
 
 describe('ChatValueObject', () => {
-  it('should create an instance of ChatValueObject', () => {
+  it('crea una instancia de ChatValueObject', () => {
     const chatValueObject = new ChatValueObject({
       guestId: uuid(),
       hostId: uuid(),
@@ -12,7 +12,7 @@ describe('ChatValueObject', () => {
     expect(chatValueObject).toBeInstanceOf(ChatValueObject);
   });
 
-  it('should have the correct properties set', () => {
+  it('debe tener las propiedades correctas establecidas', () => {
     const guestId = uuid();
     const hostId = uuid();
     const name = 'Test Chat';
@@ -28,7 +28,7 @@ describe('ChatValueObject', () => {
     expect(chatValueObject.name).toBe(name);
   });
 
-  it('should generate a UUID for each instance', () => {
+  it('debe generar un UUID para cada instancia', () => {
     const chatValueObject1 = new ChatValueObject({
       guestId: uuid(),
       hostId: uuid(),
@@ -44,7 +44,7 @@ describe('ChatValueObject', () => {
     expect(chatValueObject1.uuid).not.toBe(chatValueObject2.uuid);
   });
 
-  it('should set a timestamp when created', () => {
+  it('debe establecer una marca de tiempo cuando se crea', () => {
     const chatValueObject = new ChatValueObject({
       guestId: uuid(),
       hostId: uuid(),

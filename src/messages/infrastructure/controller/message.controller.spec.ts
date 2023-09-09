@@ -1,4 +1,4 @@
-import { MessageController } from './message.controller'; // Asegúrate de que la ruta sea correcta
+import { MessageController } from './message.controller';
 import { MessageSQLiteRepository } from '../repository/sqlite.repository';
 import { MessageUseCase } from 'src/messages/application/message.use-case';
 import { MessageEntity } from 'src/messages/domain/message.enity';
@@ -13,17 +13,17 @@ describe('MessageController', () => {
   };
 
   beforeEach(() => {
-    messageSQLiteRepository = new MessageSQLiteRepository(null, null); // Puedes pasar null o tus dependencias reales aquí
+    messageSQLiteRepository = new MessageSQLiteRepository(null, null);
     messageController = new MessageController(messageSQLiteRepository);
     messageController['messageCaseUse'] =
-      mockMessageUseCase as unknown as MessageUseCase; // Accedemos al miembro privado para asignar el mock
+      mockMessageUseCase as unknown as MessageUseCase;
   });
 
-  it('should be defined', () => {
+  it('debe definirse', () => {
     expect(messageController).toBeDefined();
   });
 
-  it('should get all messages of a chat', async () => {
+  it('debe obtener todos los mensajes de un chat', async () => {
     const chatId = '7871e8c6-967c-442c-a2ef-25a05a3bbad0';
     const expectedMessages = [
       {
@@ -48,13 +48,10 @@ describe('MessageController', () => {
 
     const result = await messageController.getAllMessages({ chatId });
 
-    // expect(mockMessageUseCase.getMessageAllofChat).toHaveBeenCalledWith({
-    //   chatId,
-    // });
     expect(result).toEqual(expectedMessages);
   });
 
-  it('should create a message', async () => {
+  it('debe crear un mensaje', async () => {
     const messageEntity: MessageEntity = {
       uuid: '7c0690eb-9d5b-4b2c-90ec-699f8d960600',
       hostId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
@@ -63,7 +60,7 @@ describe('MessageController', () => {
       message: 'Test Message',
       timestamp: new Date(),
     };
-    const expectedMessage = { id: 1, message: 'Hello', chatId: 'test-chat-id' };
+    const expectedMessage = { status: 201 };
 
     mockMessageUseCase.registerMessage.mockResolvedValue(expectedMessage);
 

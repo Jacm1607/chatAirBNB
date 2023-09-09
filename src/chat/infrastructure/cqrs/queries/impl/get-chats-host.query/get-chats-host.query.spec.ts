@@ -1,8 +1,8 @@
-import { GetChatsHostQuery } from './get-chats-host.query'; // Asegúrate de que la ruta sea correcta
+import { GetChatsHostQuery } from './get-chats-host.query';
 
 describe('GetChatsHostQuery', () => {
-  it('should create an instance of GetChatsHostQuery with hostId', () => {
-    const hostId = 'host-id';
+  it('debe crear una instancia de GetChatsHostQuery con hostId', () => {
+    const hostId = '130e2492-a21c-4211-b68c-91cb3a39f294';
 
     const query = new GetChatsHostQuery(hostId);
 

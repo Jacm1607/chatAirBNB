@@ -2,7 +2,7 @@ import { validate } from 'class-validator';
 import { CreateChatDto } from './request';
 
 describe('CreateChatDto', () => {
-  it('should pass validation with valid data', async () => {
+  it('debe pasar la validación con datos válidos', async () => {
     const validData = {
       guestId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
       hostId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
@@ -16,7 +16,7 @@ describe('CreateChatDto', () => {
     await expect(errors.length).toBe(0);
   });
 
-  it('should fail validation when guestId is not a valid UUID', async () => {
+  it('debe validar cuando guestId no es un UUID válido', async () => {
     const invalidData = {
       guestId: 'invalid-uuid',
       hostId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
@@ -30,7 +30,7 @@ describe('CreateChatDto', () => {
     await expect(errors.length).toBeGreaterThan(0);
   });
 
-  it('should fail validation when hostId is not a valid UUID', async () => {
+  it('debe validar cuando hostId no es un UUID válido', async () => {
     const invalidData = {
       guestId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
       hostId: 'invalid-uuid',
@@ -44,7 +44,7 @@ describe('CreateChatDto', () => {
     await expect(errors.length).toBeGreaterThan(0);
   });
 
-  it('should fail validation when name is empty', async () => {
+  it('debe validar cuando el nombre está vacío', async () => {
     const invalidData = {
       guestId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
       hostId: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',

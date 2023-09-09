@@ -11,23 +11,12 @@ describe('ChatModel', () => {
     timestamp: new Date(),
   };
 
-  it('should create an instance of ChatModel', () => {
+  it('debe crear una instancia de ChatModel', () => {
     const chatModel = new ChatModel();
     expect(chatModel).toBeInstanceOf(ChatModel);
   });
 
-  // it('should have the correct properties', () => {
-  //   const chatModel = new ChatModel();
-  //   console.log(JSON.stringify(chatModel))
-  //   expect(chatModel).toHaveProperty('id');
-  //   expect(chatModel).toHaveProperty('uuid');
-  //   expect(chatModel).toHaveProperty('hostId');
-  //   expect(chatModel).toHaveProperty('guestId');
-  //   expect(chatModel).toHaveProperty('name');
-  //   expect(chatModel).toHaveProperty('timestamp');
-  // });
-
-  it('should set properties correctly', () => {
+  it('debe establecer las propiedades correctamente', () => {
     const chatModel = new ChatModel();
     chatModel.id = 1;
     chatModel.uuid = '7c0690eb-9d5b-4b2c-90ec-699f8d960600';
@@ -36,7 +25,6 @@ describe('ChatModel', () => {
     chatModel.name = 'Test Chat';
     chatModel.timestamp = new Date();
 
-    // expect(chatModel.id).toBe(1);
     expect(chatModel.uuid).toBe(_chat.uuid);
     expect(chatModel.hostId).toBe(_chat.hostId);
     expect(chatModel.guestId).toBe(_chat.guestId);
@@ -44,23 +32,17 @@ describe('ChatModel', () => {
     expect(chatModel.timestamp).toBeInstanceOf(Date);
   });
 
-  it('should mock a ChatModel instance', () => {
-    // Crear una instancia mock de ChatModel
+  it('debe simular una instancia de ChatModel', () => {
     const mockChatModel = mock(ChatModel);
 
-    // Configurar el comportamiento esperado
-    // when(mockChatModel.id).thenReturn(1);
     when(mockChatModel.uuid).thenReturn(_chat.uuid);
     when(mockChatModel.hostId).thenReturn(_chat.hostId);
     when(mockChatModel.guestId).thenReturn(_chat.guestId);
     when(mockChatModel.name).thenReturn('Mock Chat');
     when(mockChatModel.timestamp).thenReturn(new Date());
 
-    // Obtener una instancia real a partir del mock
     const chatModel = instance(mockChatModel);
 
-    // Probar las propiedades
-    // expect(chatModel.id).toBe(1);
     expect(chatModel.uuid).toBe(_chat.uuid);
     expect(chatModel.hostId).toBe(_chat.hostId);
     expect(chatModel.guestId).toBe(_chat.guestId);
