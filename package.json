@@ -61,10 +61,7 @@
       "src/main.ts",
       "src/app.controller.ts",
       "src/app.service.ts",
-      "src/chat/infrastructure/repository/mock.repository.ts",
-      "src/app.module.ts",
-      "src/chat/cqrs/commands/handler/save-chat.handler/save-chat.handler.ts",
-      "src/messages/infrastructure/cqrs/commands/handler/save-message.handler/save-message.handler.ts"
+      "src/app.module.ts"
     ],
     "moduleFileExtensions": [
       "js",
