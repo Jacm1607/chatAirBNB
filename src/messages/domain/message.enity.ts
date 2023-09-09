@@ -1,7 +1,7 @@
 export interface MessageEntity {
   uuid: string;
-  guestId: number;
-  hostId: number;
+  guestId: string;
+  hostId: string;
   chatId: string;
   message: string;
   timestamp: Date;

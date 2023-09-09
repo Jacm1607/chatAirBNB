@@ -2,15 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { ChatRepository } from 'src/chat/domain/chat.repository';
 import { ChatEntity } from 'src/chat/domain/chat.entity';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { GetChatsGuestQuery } from 'src/chat/cqrs/queries/impl/get-chats-guest.query/get-chats-guest.query';
-import { GetChatsHostQuery } from 'src/chat/cqrs/queries/impl/get-chats-host.query/get-chats-host.query';
-import { GetChatsQuery } from 'src/chat/cqrs/queries/impl/get-chats.query/get-chats.query';
+import { GetChatsGuestQuery } from '../cqrs/queries/impl/get-chats-guest.query/get-chats-guest.query';
+import { GetChatsHostQuery } from '../cqrs/queries/impl/get-chats-host.query/get-chats-host.query';
+import { GetChatsQuery } from '../cqrs/queries/impl/get-chats.query/get-chats.query';
 
 @Injectable()
 export class ChatSQLiteRepository implements ChatRepository {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus:CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   async getAllChatHost(hostId: any): Promise<any> {

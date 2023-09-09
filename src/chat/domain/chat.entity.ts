@@ -1,7 +1,7 @@
 export interface ChatEntity {
   uuid: string;
-  guestId: number;
-  hostId: number;
+  guestId: string;
+  hostId: string;
   name: string;
   timestamp: Date;
 }

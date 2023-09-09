@@ -3,8 +3,8 @@ import { ChatEntity } from './chat.entity';
 
 export class ChatValueObject implements ChatEntity {
   uuid: string;
-  guestId: number;
-  hostId: number;
+  guestId: string;
+  hostId: string;
   name: string;
   timestamp: Date;
 
@@ -13,8 +13,8 @@ export class ChatValueObject implements ChatEntity {
     hostId,
     name,
   }: {
-    guestId: number;
-    hostId: number;
+    guestId: string;
+    hostId: string;
     name: string;
   }) {
     this.uuid = uuid();

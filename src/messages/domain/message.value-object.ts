@@ -3,8 +3,8 @@ import { MessageEntity } from './message.enity';
 
 export class MessageValueObject implements MessageEntity {
   uuid: string;
-  guestId: number;
-  hostId: number;
+  guestId: string;
+  hostId: string;
   chatId: string;
   message: string;
   timestamp: Date;
@@ -15,8 +15,8 @@ export class MessageValueObject implements MessageEntity {
     chatId,
     message,
   }: {
-    guestId?: number;
-    hostId?: number;
+    guestId?: string;
+    hostId?: string;
     chatId: string;
     message: string;
   }) {

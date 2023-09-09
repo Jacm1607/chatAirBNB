@@ -51,11 +51,21 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.3",
+    "ts-mockito": "^2.6.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.3"
   },
   "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/main.ts",
+      "src/app.controller.ts",
+      "src/app.service.ts",
+      "src/chat/infrastructure/repository/mock.repository.ts",
+      "src/app.module.ts",
+      "src/chat/cqrs/commands/handler/save-chat.handler/save-chat.handler.ts",
+      "src/messages/infrastructure/cqrs/commands/handler/save-message.handler/save-message.handler.ts"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",

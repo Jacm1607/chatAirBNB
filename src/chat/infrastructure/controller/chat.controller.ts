@@ -1,15 +1,23 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, ValidationPipe } from '@nestjs/common';
-import { ChatEntity } from 'src/chat/domain/chat.entity';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ChatSQLiteRepository } from '../repository/sqlite.repository';
-import { ChatUseCase } from 'src/chat/application/chat.use-case';
+import { ChatUseCase } from './../../application/chat.use-case';
 import { RequestGuest } from './interfaces/request-guest.interface';
 import { RequestHost } from './interfaces/request-host.interface';
 import { CreateChatDto } from './dto/request';
 
 @Controller()
 export class ChatController {
-  constructor(private readonly appService: ChatSQLiteRepository) { }
-  private uuidv4Regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+  constructor(private readonly appService: ChatSQLiteRepository) {}
+  private uuidv4Regex =
+    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
   private chatCaseUse = new ChatUseCase(this.appService);
 
   @Get('/chats')
@@ -36,12 +44,14 @@ export class ChatController {
   }
 
   @Post('/chat/create')
-  async createChat(@Body(new ValidationPipe()) body: CreateChatDto): Promise<any> {
-    console.log(body)
+  async createChat(
+    @Body(new ValidationPipe()) body: CreateChatDto,
+  ): Promise<any> {
+    console.log(body);
     const newChat = await this.chatCaseUse.registerChat(body);
-    console.log(newChat)
+    console.log(newChat);
     return {
-      status: 201
+      status: 201,
     };
   }
 }

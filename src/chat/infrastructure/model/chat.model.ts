@@ -9,10 +9,10 @@ export class ChatModel {
   uuid: string;
 
   @Column()
-  hostId: number;
+  hostId: string;
 
   @Column()
-  guestId: number;
+  guestId: string;
 
   @Column()
   name: string;

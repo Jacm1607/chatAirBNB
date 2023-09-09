@@ -8,11 +8,11 @@ export class MessageModel {
   @Column()
   uuid: string;
 
-  @Column({ nullable: true })
-  hostId: number;
+  @Column()
+  hostId: string;
 
-  @Column({ nullable: true })
-  guestId: number;
+  @Column()
+  guestId: string;
 
   @Column()
   chatId: string;
