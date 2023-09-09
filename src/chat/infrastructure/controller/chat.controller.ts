@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   Get,
@@ -12,12 +11,11 @@ import { ChatUseCase } from './../../application/chat.use-case';
 import { RequestGuest } from './interfaces/request-guest.interface';
 import { RequestHost } from './interfaces/request-host.interface';
 import { CreateChatDto } from './dto/request';
+import { UUIDValid } from './../../../shareKernel/UUID';
 
 @Controller()
 export class ChatController {
   constructor(private readonly appService: ChatSQLiteRepository) {}
-  private uuidv4Regex =
-    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
   private chatCaseUse = new ChatUseCase(this.appService);
 
   @Get('/chats')
@@ -27,20 +25,14 @@ export class ChatController {
 
   @Get('/chat/guest/:guestId')
   getChatGuest(@Param() guestId: RequestGuest): Promise<any> {
-    if (this.uuidv4Regex.test(guestId.guestId)) {
-      return this.chatCaseUse.getChatGuest(guestId);
-    } else {
-      throw new BadRequestException();
-    }
+    UUIDValid(guestId.guestId)
+    return this.chatCaseUse.getChatGuest(guestId);
   }
 
   @Get('/chat/host/:hostId')
   getChatHost(@Param() hostId: RequestHost): Promise<any> {
-    if (this.uuidv4Regex.test(hostId.hostId)) {
-      return this.chatCaseUse.getChatHost(hostId);
-    } else {
-      throw new BadRequestException();
-    }
+    UUIDValid(hostId.hostId)
+    return this.chatCaseUse.getChatHost(hostId);
   }
 
   @Post('/chat/create')

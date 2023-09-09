@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   Get,
@@ -11,15 +10,16 @@ import { MessageSQLiteRepository } from '../repository/sqlite.repository';
 import { MessageUseCase } from './../../application/message.use-case';
 import { MessageEntity } from './../../domain/message.enity';
 import { CreateMessageDto } from '../dto/request';
+import { UUIDValid } from './../../../shareKernel/UUID';
 
 @Controller('message')
 export class MessageController {
   constructor(private readonly appService: MessageSQLiteRepository) {}
   private messageCaseUse = new MessageUseCase(this.appService);
-  private uuidv4Regex =
-    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+ 
   @Get(':chatId')
   getAllMessages(@Param() params: any): Promise<any> {
+    UUIDValid(params.chatId)
     return this.messageCaseUse.getMessageAllofChat(params.chatId);
   }
 
@@ -27,16 +27,9 @@ export class MessageController {
   async createMessage(
     @Body(new ValidationPipe()) body: CreateMessageDto,
   ): Promise<any> {
-    console.log(body)
-    if (!this.uuidv4Regex.test(body.chatId)) {
-      throw new BadRequestException();
-    }
-    if (!this.uuidv4Regex.test(body.hostId)) {
-      throw new BadRequestException();
-    }
-    if (!this.uuidv4Regex.test(body.guestId)) {
-      throw new BadRequestException();
-    }
+    UUIDValid(body.chatId)
+    UUIDValid(body.hostId)
+    UUIDValid(body.guestId)
     await this.messageCaseUse.registerMessage(body);
     return {
       status: 201,
