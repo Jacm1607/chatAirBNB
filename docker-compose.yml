@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7.10
+    restart: always
+    environment:
+      MYSQL_DATABASE: io-chat
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8080:80
+
+  nestjs:
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    build: .
+    ports:
+      - 4000:4000
+
+
+volumes:
+  db_data:

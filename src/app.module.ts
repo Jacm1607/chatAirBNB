@@ -15,10 +15,11 @@ import { GetChatsHandler } from './chat/infrastructure/cqrs/queries/handlers/get
 import { GetChatsGuestHandler } from './chat/infrastructure/cqrs/queries/handlers/get-chats-guest.handler/get-chats-guest.handler';
 import { SaveChatHandler } from './chat/infrastructure/cqrs/commands/handler/save-chat.handler/save-chat.handler';
 import { SaveMessageHandler } from './messages/infrastructure/cqrs/commands/handler/save-message.handler/save-message.handler';
+import { MYSQL } from './db/mysql.config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(SQLITE),
+    TypeOrmModule.forRoot(MYSQL),
     TypeOrmModule.forFeature([ChatModel, MessageModel]),
     CqrsModule,
   ],
