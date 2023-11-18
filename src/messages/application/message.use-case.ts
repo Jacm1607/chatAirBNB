@@ -15,7 +15,7 @@ export class MessageUseCase {
     return messageCreated;
   };
 
-  getMessageAllofChat = async ({ chatId }) => {
+  getMessageAllofChat = async ( chatId ) => {
     const messagesGet = this.messageRepository.getAllMessageOfChat(chatId);
     return messagesGet;
   };
