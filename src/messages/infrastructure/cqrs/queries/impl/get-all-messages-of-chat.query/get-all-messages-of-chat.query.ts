@@ -1,3 +1,3 @@
 export class GetAllMessagesOfChatQuery {
-  constructor(public readonly chatId: string) {}
+	constructor(public readonly chatId: string) {}
 }

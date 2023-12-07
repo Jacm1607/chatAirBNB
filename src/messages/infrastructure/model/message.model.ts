@@ -2,24 +2,24 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class MessageModel {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  uuid: string;
+	@Column()
+	uuid: string;
 
-  @Column()
-  hostId: string;
+	@Column()
+	hostId: string;
 
-  @Column()
-  guestId: string;
+	@Column()
+	guestId: string;
 
-  @Column()
-  chatId: string;
+	@Column()
+	chatId: string;
 
-  @Column()
-  message: string;
+	@Column()
+	message: string;
 
-  @Column()
-  timestamp: Date;
+	@Column()
+	timestamp: Date;
 }

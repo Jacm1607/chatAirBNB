@@ -6,15 +6,15 @@ import { GetAllMessagesOfChatQuery } from '../cqrs/queries/impl/get-all-messages
 
 @Injectable()
 export class MessageSQLiteRepository implements MessageRepository {
-  constructor(
-    private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus,
-  ) {}
+	constructor(
+		private readonly queryBus: QueryBus,
+		private readonly commandBus: CommandBus,
+	) {}
 
-  async getAllMessageOfChat(chatId: string): Promise<any> {
-    return await this.queryBus.execute(new GetAllMessagesOfChatQuery(chatId));
-  }
-  async createMessage(message: MessageEntity): Promise<any> {
-    return await this.commandBus.execute(message);
-  }
+	async getAllMessageOfChat(chatId: string): Promise<any> {
+		return await this.queryBus.execute(new GetAllMessagesOfChatQuery(chatId));
+	}
+	async createMessage(message: MessageEntity): Promise<any> {
+		return await this.commandBus.execute(message);
+	}
 }

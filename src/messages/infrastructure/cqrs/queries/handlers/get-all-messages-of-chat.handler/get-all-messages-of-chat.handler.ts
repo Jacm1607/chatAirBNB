@@ -6,16 +6,16 @@ import { Repository } from 'typeorm';
 
 @QueryHandler(GetAllMessagesOfChatQuery)
 export class GetAllMessagesOfChatHandler
-  implements IQueryHandler<GetAllMessagesOfChatQuery>
+	implements IQueryHandler<GetAllMessagesOfChatQuery>
 {
-  constructor(
-    @InjectRepository(MessageModel)
-    private messageRepository: Repository<MessageModel>,
-  ) {}
+	constructor(
+		@InjectRepository(MessageModel)
+		private messageRepository: Repository<MessageModel>,
+	) {}
 
-  async execute(query: GetAllMessagesOfChatQuery): Promise<any> {
-    const { chatId }: any = query;
-    const messages = await this.messageRepository.findBy({ chatId });
-    return messages;
-  }
+	async execute(query: GetAllMessagesOfChatQuery): Promise<any> {
+		const { chatId }: any = query;
+		const messages = await this.messageRepository.findBy({ chatId });
+		return messages;
+	}
 }
