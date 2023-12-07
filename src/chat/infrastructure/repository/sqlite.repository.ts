@@ -8,25 +8,25 @@ import { GetChatsQuery } from '../cqrs/queries/impl/get-chats.query/get-chats.qu
 
 @Injectable()
 export class ChatSQLiteRepository implements ChatRepository {
-  constructor(
-    private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus,
-  ) {}
+	constructor(
+		private readonly queryBus: QueryBus,
+		private readonly commandBus: CommandBus,
+	) {}
 
-  async getAllChatHost(hostId: any): Promise<any> {
-    const chats = await this.queryBus.execute(new GetChatsHostQuery(hostId));
-    return chats;
-  }
-  async getAllChatGuest(guestId: any): Promise<any> {
-    const chats = await this.queryBus.execute(new GetChatsGuestQuery(guestId));
-    return chats;
-  }
-  async createChat(chat: ChatEntity): Promise<any> {
-    return await this.commandBus.execute(chat);
-  }
+	async getAllChatHost(hostId: any): Promise<any> {
+		const chats = await this.queryBus.execute(new GetChatsHostQuery(hostId));
+		return chats;
+	}
+	async getAllChatGuest(guestId: any): Promise<any> {
+		const chats = await this.queryBus.execute(new GetChatsGuestQuery(guestId));
+		return chats;
+	}
+	async createChat(chat: ChatEntity): Promise<any> {
+		return await this.commandBus.execute(chat);
+	}
 
-  async getAllChat(): Promise<any> {
-    const chats = await this.queryBus.execute(new GetChatsQuery());
-    return chats;
-  }
+	async getAllChat(): Promise<any> {
+		const chats = await this.queryBus.execute(new GetChatsQuery());
+		return chats;
+	}
 }

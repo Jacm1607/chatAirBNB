@@ -2,21 +2,21 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ChatModel {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  uuid: string;
+	@Column()
+	uuid: string;
 
-  @Column()
-  hostId: string;
+	@Column()
+	hostId: string;
 
-  @Column()
-  guestId: string;
+	@Column()
+	guestId: string;
 
-  @Column()
-  name: string;
+	@Column()
+	name: string;
 
-  @Column()
-  timestamp: Date;
+	@Column()
+	timestamp: Date;
 }

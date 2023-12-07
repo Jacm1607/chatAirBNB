@@ -1,3 +1,3 @@
 export class GetChatsHostQuery {
-  constructor(public readonly hostId: string) {}
+	constructor(public readonly hostId: string) {}
 }

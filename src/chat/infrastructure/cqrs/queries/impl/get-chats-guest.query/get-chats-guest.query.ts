@@ -1,3 +1,3 @@
 export class GetChatsGuestQuery {
-  constructor(public readonly guestId: string) {}
+	constructor(public readonly guestId: string) {}
 }

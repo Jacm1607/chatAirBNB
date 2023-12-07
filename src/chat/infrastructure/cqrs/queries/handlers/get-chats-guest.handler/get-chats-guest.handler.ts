@@ -6,13 +6,13 @@ import { GetChatsGuestQuery } from '../../impl/get-chats-guest.query/get-chats-g
 
 @QueryHandler(GetChatsGuestQuery)
 export class GetChatsGuestHandler implements IQueryHandler<GetChatsGuestQuery> {
-  constructor(
-    @InjectRepository(ChatModel) private chatRepository: Repository<ChatModel>,
-  ) {}
+	constructor(
+		@InjectRepository(ChatModel) private chatRepository: Repository<ChatModel>,
+	) {}
 
-  async execute(query: GetChatsGuestQuery): Promise<ChatModel[]> {
-    const { guestId }: any = query;
-    const chats = await this.chatRepository.findBy({ guestId });
-    return chats;
-  }
+	async execute(query: GetChatsGuestQuery): Promise<ChatModel[]> {
+		const { guestId }: any = query;
+		const chats = await this.chatRepository.findBy({ guestId });
+		return chats;
+	}
 }
