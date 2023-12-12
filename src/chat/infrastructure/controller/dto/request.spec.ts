@@ -13,7 +13,7 @@ describe('CreateChatDto', () => {
 		Object.assign(createChatDto, validData);
 
 		const errors = await validate(createChatDto);
-		await expect(errors.length).toBe(0);
+		expect(errors.length).toBe(0);
 	});
 
 	it('debe validar cuando guestId no es un UUID válido', async () => {
@@ -27,7 +27,7 @@ describe('CreateChatDto', () => {
 		Object.assign(createChatDto, invalidData);
 
 		const errors = await validate(createChatDto);
-		await expect(errors.length).toBeGreaterThan(0);
+		expect(errors.length).toBeGreaterThan(0);
 	});
 
 	it('debe validar cuando hostId no es un UUID válido', async () => {
@@ -41,7 +41,7 @@ describe('CreateChatDto', () => {
 		Object.assign(createChatDto, invalidData);
 
 		const errors = await validate(createChatDto);
-		await expect(errors.length).toBeGreaterThan(0);
+		expect(errors.length).toBeGreaterThan(0);
 	});
 
 	it('debe validar cuando el nombre está vacío', async () => {
@@ -55,6 +55,6 @@ describe('CreateChatDto', () => {
 		Object.assign(createChatDto, invalidData);
 
 		const errors = await validate(createChatDto);
-		await expect(errors.length).toBeGreaterThan(0);
+		expect(errors.length).toBeGreaterThan(0);
 	});
 });
