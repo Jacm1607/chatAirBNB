@@ -58,6 +58,5 @@ jobs:
               IdentityFile ~/.ssh/staging.key
               StrictHostKeyChecking no
           END
-		  
       - name: Execute command
         run: ssh staging 'cd /root/app/chatAirBNB && bash deploy.sh'
