@@ -36,7 +36,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   deploy:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +44,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
-          SSH_HOST: ${{ secrets.HOST }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
           mkdir -p ~/.ssh/
