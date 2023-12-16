@@ -59,4 +59,4 @@ jobs:
               StrictHostKeyChecking no
           END
       - name: Execute command
-        run: ssh staging 'cd /home/app/chatAirBNB && npm run start'
+        run: ssh staging 'cd /home/app/chatAirBNB && bash deploy.sh'
