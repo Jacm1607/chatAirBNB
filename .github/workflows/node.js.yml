@@ -14,7 +14,6 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -33,7 +32,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   deploy:
-    #needs: build
     runs-on: ubuntu-latest
 
     steps:
