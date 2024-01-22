@@ -4,10 +4,9 @@ import { MessageValueObject } from '../domain/message.value-object';
 export class MessageUseCase {
 	constructor(private readonly messageRepository: MessageRepository) {}
 
-	registerMessage = async ({ guestId, hostId, chatId, message }: any) => {
+	registerMessage = async ({ userId, chatId, message }: any) => {
 		const messageValue = new MessageValueObject({
-			guestId,
-			hostId,
+			userId,
 			chatId,
 			message,
 		});

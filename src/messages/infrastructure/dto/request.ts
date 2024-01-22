@@ -2,10 +2,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateMessageDto {
 	@IsNotEmpty() // Valida que no esté vacío
-	guestId: string;
-
-	@IsNotEmpty() // Valida que no esté vacío
-	hostId: string;
+	userId: string;
 
 	@IsNotEmpty() // Valida que no esté vacío
 	chatId: string;

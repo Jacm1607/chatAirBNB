@@ -9,10 +9,7 @@ export class MessageModel {
 	uuid: string;
 
 	@Column()
-	hostId: string;
-
-	@Column()
-	guestId: string;
+	userId: string;
 
 	@Column()
 	chatId: string;

@@ -27,8 +27,7 @@ export class MessageController {
 		@Body(new ValidationPipe()) body: CreateMessageDto,
 	): Promise<any> {
 		UUIDValid(body.chatId);
-		UUIDValid(body.hostId);
-		UUIDValid(body.guestId);
+		UUIDValid(body.userId);
 		await this.messageCaseUse.registerMessage(body);
 		return {
 			status: 201,
