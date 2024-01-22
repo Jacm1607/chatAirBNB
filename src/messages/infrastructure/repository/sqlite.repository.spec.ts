@@ -33,8 +33,7 @@ describe('MessageSQLiteRepository', () => {
 			{
 				id: 1,
 				uuid: 'a6a5b284-66ce-4bab-ae6a-d700b5dcde3a',
-				hostId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
-				guestId: '284a1ecf-f54f-4a08-83c6-add315d4730b',
+				userId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
 				chatId: '84b54d1a-05dd-455a-8f46-e64fb4b37a70',
 				message: 'Message 1',
 				timestamp: '2023-09-07T21:04:16.686Z',
@@ -42,8 +41,7 @@ describe('MessageSQLiteRepository', () => {
 			{
 				id: 2,
 				uuid: '2e441433-1ca0-4ecb-a714-5faa16feef5e',
-				hostId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
-				guestId: '284a1ecf-f54f-4a08-83c6-add315d4730b',
+				userId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
 				chatId: '84b54d1a-05dd-455a-8f46-e64fb4b37a70',
 				message: 'Message 1',
 				timestamp: '2023-09-08T20:38:16.930Z',
@@ -64,8 +62,7 @@ describe('MessageSQLiteRepository', () => {
 		const messageEntity: MessageEntity = {
 			uuid: '84b54d1a-05dd-12a3-8f46-e64fb4b37a70',
 			chatId: '84b54d1a-05dd-455a-8f46-e64fb4b37a70',
-			hostId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
-			guestId: '284a1ecf-f54f-4a08-83c6-add315d4730b',
+			userId: '13a02f9c-a037-4b43-88c4-34352f14abd0',
 			message: 'Message 1',
 			timestamp: new Date(),
 		};

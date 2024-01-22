@@ -28,16 +28,14 @@ describe('MessageController', () => {
 		const expectedMessages = [
 			{
 				uuid: '7c0690eb-9d5b-4b2c-90ec-699f8d960600',
-				hostId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
-				guestId: 'eb37c28d-cf67-404c-9d77-5d5aef42a005',
+				userId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
 				chatId: '7871e8c6-967c-442c-a2ef-25a05a3bbad0',
 				message: 'Test Message',
 				timestamp: new Date(),
 			},
 			{
 				uuid: '7c0690eb-9d5b-4b2c-90ec-699f8d960600',
-				hostId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
-				guestId: 'eb37c28d-cf67-404c-9d77-5d5aef42a005',
+				userId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
 				chatId: '7871e8c6-967c-442c-a2ef-25a05a3bbad0',
 				message: 'Test Message',
 				timestamp: new Date(),
@@ -54,8 +52,7 @@ describe('MessageController', () => {
 	it('debe crear un mensaje', async () => {
 		const messageEntity: MessageEntity = {
 			uuid: '7c0690eb-9d5b-4b2c-90ec-699f8d960600',
-			hostId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
-			guestId: 'eb37c28d-cf67-404c-9d77-5d5aef42a005',
+			userId: '9b049bbe-46d8-4876-842e-373267a6b5d9',
 			chatId: '7871e8c6-967c-442c-a2ef-25a05a3bbad0',
 			message: 'Test Message',
 			timestamp: new Date(),
